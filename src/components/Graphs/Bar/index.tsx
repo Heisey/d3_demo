@@ -12,9 +12,9 @@ export const Component: IBarGraph<I.IGraphData> = (props) => {
 
   useEffect(() => {
     const formattedId = '#' + id
-    console.log(formattedId)
+    
     const container = d3.select(formattedId)
-    // console.log('container,' , container)
+    
     // clear out stale elements
     container.html(null)
     // generate new elements

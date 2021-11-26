@@ -1,10 +1,22 @@
 import { IGraph } from "../../components/Graphs"
 
-const graph: IGraph.IGraphConfig = {
+export const color: IGraph.IGraphConfig = {
   units: {
     x: 'color',
     y: 'amount'
   }
 }
 
-export default graph
+export const food: IGraph.IGraphConfig = {
+  units: {
+    x: 'dish',
+    y: 'orders'
+  }
+}
+
+export const bpGraph: IGraph.IGraphConfig = {
+  units: {
+    x: '',
+    y: ''
+  }
+}

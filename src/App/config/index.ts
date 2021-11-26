@@ -1,4 +1,4 @@
-import graph from './graph'
+import * as graph from './graph'
 
 const config = {
   graph
