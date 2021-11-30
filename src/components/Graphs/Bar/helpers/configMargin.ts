@@ -1,9 +1,9 @@
 
-import * as I from '../interfaces'
+import * as IGraph from '../../interfaces'
 
-const configMargin = (margin?: I.GraphMargin) => {
-  if (!margin) return [0, 0, 0, 0] as I.GraphMargin
-  return margin.map(dataSet => dataSet ? dataSet : 0) as I.GraphMargin
+const configMargin = (margin?: IGraph.GraphMargin) => {
+  if (!margin) return [0, 0, 0, 0] as IGraph.GraphMargin
+  return margin.map(dataSet => dataSet ? dataSet : 0) as IGraph.GraphMargin
 }
 
 export default configMargin

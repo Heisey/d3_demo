@@ -1,7 +1,6 @@
+import * as IGraph from '../interfaces'
 
-import * as I from '../interfaces'
-
-const generateSvgContainer = (node: I.D3Node, size: [number, number]) => {
+const generateSvgContainer = (node: IGraph.D3Node, size: [number, number]) => {
   const container = node.append('svg')
   
   return container

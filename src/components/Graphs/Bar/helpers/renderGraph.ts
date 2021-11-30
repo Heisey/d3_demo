@@ -1,12 +1,15 @@
 
 import * as d3 from 'd3'
 
+import * as IGraph from '../../interfaces'
+import lib from '../../lib'
+
 import helpers from './'
 import * as I from '../interfaces'
 
-type RenderGraph<T> = (node: I.D3Node, data: T[], config: I.IGraphConfig,  graphStyles: I.IGraphStyles) => void
+type RenderGraph<T> = (node: IGraph.D3Node, data: T[], config: I.IGraphConfig,  graphStyles: IGraph.GraphStyles) => void
 
-const renderGraph: RenderGraph<I.IGraphData> = (node, data, config, styles) => {
+const renderGraph: RenderGraph<IGraph.GraphData> = (node, data, config, styles) => {
   // generated size for graph
   const graphMargin = helpers.configMargin(styles.margin) 
   const graphSize = helpers.configGraphSize(styles.size, graphMargin)
@@ -23,21 +26,32 @@ const renderGraph: RenderGraph<I.IGraphData> = (node, data, config, styles) => {
   })
 
   // generate container element for everything and container for bars
-  const container = helpers.generateSvgContainer(node, styles.size)
+  const container = lib.generateSvgContainer(node, styles.size)
   const graphGroup = helpers.generateGraphGroup(container, styles.size, graphMargin)
 
 
   // generate bars and append to group
-  const bars = graphGroup.selectAll('rect')
+  const bars = graphGroup
+    .selectAll('rect')
     .data(data)
 
   bars
     .enter()
     .append('rect')
-    .attr('height', (d) => (graphSize[0] - yScale(d.value)))
+
+    // General attributes
     .attr('width', xScale.bandwidth)
     .attr('fill', (d) => d.fill)
     .attr('x', (d) => xScale(d.category) as number)
+
+    // Starting conditions for transitions
+    .attr('height', 0)
+    .attr('y', graphSize[0])
+
+    .transition().duration(1500)
+
+    // Ending conditions for transitions
+    .attr('height', (d) => (graphSize[0] - yScale(d.value)))
     .attr('y', d => yScale(d.value))
 
   //  generate containers elements for scales

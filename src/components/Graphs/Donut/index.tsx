@@ -6,25 +6,33 @@ import * as IGraph from '../interfaces'
 import helpers from './helpers'
 import * as I from './interfaces'
 
-type IBarGraph<T> = React.FC<I.IBarGraphProps<T>>
+interface IDonutGraphProps<T> {
+  id: string
+  data: T[]
+  styles: I.DonutStyles
+}
 
-export const Component: IBarGraph<IGraph.GraphData> = (props) => {
+type IDonutGraph<T> = React.FC<IDonutGraphProps<T>>
 
-  const { id, data, styles, config } = props
+const Donut: IDonutGraph<IGraph.GraphData> = (props) => {
+
+  const {
+    data,
+    id,
+    styles
+  } = props
 
   useEffect(() => {
     const formattedId = '#' + id
-    
+
     const el = d3.select(formattedId)
-    
-    // clear out stale elements
+
     el.html(null)
-    // generate new elements
-    helpers.renderGraph(el, data, config, styles)
+
+    helpers.renderGraph(el, data, styles)
   })
 
   return <div id={id}></div>
 }
 
-
-export * as IGraph from './interfaces'
+export default Donut

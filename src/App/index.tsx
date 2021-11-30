@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import api from '../api'
 import { IModels } from '../api'
 import * as components from '../components'
-import { IGraph } from '../components/Graphs'
+import * as IGraph from '../components/Graphs/interfaces'
 import config from './config'
 import styles from './styles'
 
@@ -46,7 +46,7 @@ function App() {
     }
   }
 
-  const configCateg = (group: string) => {
+  const configCategory = (group: string) => {
     switch(group) {
       case 'groupOne':
         return '< 130/80'
@@ -59,7 +59,7 @@ function App() {
     }
   }
 
-  const configDishData = (): IGraph.IGraphData[] => {
+  const configDishData = (): IGraph.GraphData[] => {
 
     if (!dishesData) return [{ value: 0, category: '', fill: ''}]
 
@@ -70,36 +70,56 @@ function App() {
     }))
   }
 
-  const configBpData = (): IGraph.IGraphData[] => {
+  const configBpData = (): IGraph.GraphData[] => {
     if (!bpData) return [{ value: 0, category: '', fill: ''}]
 
     return bpData.map(dataSet => ({
       value: dataSet.data.value,
       fill: configColor(dataSet.data.label),
-      category: configCateg(dataSet.data.label)
+      category: configCategory(dataSet.data.label)
     }))
   }
 
   return (
     <styles.App>
-      <Bar.Component
-        id='graph1'
-        data={api.fakeData}
-        styles={styles.graph}
-        config={config.graph.color}
-      />
-      <Bar.Component
-        id='bpGraph'
-        data={configBpData()}
-        styles={styles.graph}
-        config={config.graph.bpGraph}
-      />
-      <Bar.Component
-        id='graph2'
-        data={configDishData()}
-        styles={styles.graph}
-        config={config.graph.food}
-      />
+      <styles.graphRow>
+        <Bar.Component
+          id='graph1'
+          data={api.fakeData}
+          styles={styles.barGraphStyles}
+          config={config.graph.color}
+        />
+        <Bar.Component
+          id='bpGraph'
+          data={configBpData()}
+          styles={styles.barGraphStyles}
+          config={config.graph.bpGraph}
+        />
+        <Bar.Component
+          id='graph2'
+          data={configDishData()}
+          styles={styles.barGraphStyles}
+          config={config.graph.food}
+        />
+      </styles.graphRow>
+
+      <styles.graphRow>
+        <components.Graphs.Donut
+          id='donut1'
+          data={api.fakeData}
+          styles={styles.donutGraphSTyles}
+        />
+        <components.Graphs.Donut
+          id='donut2'
+          data={configBpData()}
+          styles={styles.donutGraphSTyles}
+        />
+        <components.Graphs.Donut
+          id='donut3'
+          data={configDishData()}
+          styles={styles.donutGraphSTyles}
+        />
+      </styles.graphRow>
     </styles.App>
   );
 }

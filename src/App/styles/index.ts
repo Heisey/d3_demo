@@ -1,12 +1,14 @@
 import * as constants from './constants'
-import graph from './graph'
+import * as graphStyles from './graph'
 
+import * as containers from './containers'
 import * as base from './base'
 
 const styles = {
   constants,
-  graph,
-  ...base
+  ...graphStyles,
+  ...base,
+  ...containers
 }
 
 export default styles

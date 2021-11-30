@@ -4,7 +4,6 @@ import configXScale from "./configXScale";
 import configYScale from "./configYScale";
 
 import generateGraphGroup from './generateGraphGroup'
-import generateSvgContainer from './generateSvgContainer'
 
 import renderGraph  from "./renderGraph";
 
@@ -14,7 +13,6 @@ const helpers = {
   configXScale,
   configYScale,
   generateGraphGroup,
-  generateSvgContainer,
   renderGraph
 }
 

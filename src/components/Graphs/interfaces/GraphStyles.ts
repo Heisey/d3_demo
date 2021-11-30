@@ -1,7 +1,7 @@
-import GraphMargin from './GraphMargin'
+import * as IGraph from './'
 
 interface IGraphStyles {
-  margin?: GraphMargin
+  margin?: IGraph.GraphMargin
   size: [number, number]
 }
 

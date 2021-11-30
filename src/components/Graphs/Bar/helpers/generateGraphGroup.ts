@@ -1,7 +1,8 @@
 
-import * as I from '../interfaces'
 
-const generateGraphGroup = (node: I.D3Node, size: [number, number], margin: I.GraphMargin) => {
+import * as IGraph from '../../interfaces'
+
+const generateGraphGroup = (node: IGraph.D3Node, size: IGraph.GraphSize, margin: IGraph.GraphMargin) => {
   return node.append('g')
     .attr('height', size[0])
     .attr('width', size[1])

@@ -1,8 +1,11 @@
 import * as Bar from './Bar'
+import Donut from './Donut'
+
 export { IGraph } from './Bar'
 
 const graphs = {
-  Bar
+  Bar,
+  Donut
 }
 
 export default graphs

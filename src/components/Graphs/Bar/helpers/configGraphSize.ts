@@ -1,6 +1,8 @@
+import * as IGraph from '../../interfaces'
+
 import * as I from '../interfaces'
 
-const configGraphSize = (size: [number, number], margin: I.GraphMargin) => {
+const configGraphSize = (size: IGraph.GraphSize, margin: IGraph.GraphMargin) => {
 
   let result = []
 
@@ -8,7 +10,7 @@ const configGraphSize = (size: [number, number], margin: I.GraphMargin) => {
 
   result[1] = size[1] - margin[0] - margin[2]
 
-  return result as [number, number]
+  return result as IGraph.GraphSize
 }
 
 export default configGraphSize
