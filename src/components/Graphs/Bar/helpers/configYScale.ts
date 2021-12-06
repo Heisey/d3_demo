@@ -6,7 +6,7 @@ interface IConfigYScale {
 }
 
 const configYScale = (config: IConfigYScale) => {
-  console.log(config)
+  
   return d3
     .scaleLinear()
     .domain(config.dataMinMax)

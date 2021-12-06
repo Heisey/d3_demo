@@ -120,6 +120,15 @@ function App() {
           styles={styles.donutGraphSTyles}
         />
       </styles.graphRow>
+
+      <styles.graphRow>
+        <components.Graphs.Histogram
+          id='histo1'
+          dataRight={api.fakeDataLarge}
+          dataLeft={api.fakeData}
+          styles={styles.histgramGraphStyles}
+        />
+      </styles.graphRow>
     </styles.App>
   );
 }

@@ -24,3 +24,13 @@ export const donutGraphSTyles: IDonutGraph.DonutStyles = {
   ],
   radius: 150
 }
+
+export const histgramGraphStyles: IGraph.GraphStyles = {
+  size: [600, 600],
+  margin: [
+    constants.GRAPH_MARGIN_LEFT,
+    constants.GRAPH_MARGIN_TOP,
+    constants.GRAPH_MARGIN_RIGHT,
+    constants.GRAPH_MARGIN_BOTTOM
+  ],
+}
